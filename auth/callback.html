@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strava Verbinding - Runamigo</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #19A5FF 0%, #0084FF 100%);
+            color: white;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #19A5FF;
+        }
+        h1 {
+            margin: 0 0 10px;
+            font-size: 24px;
+        }
+        p {
+            margin: 0 0 20px;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .error {
+            background: rgba(255, 59, 48, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">🏃</div>
+        <h1>Strava Verbonden!</h1>
+        <p>Je wordt automatisch teruggeleid naar de Runamigo app...</p>
+        <div class="spinner"></div>
+        <div id="error" class="error" style="display: none;">
+            <strong>Er ging iets mis</strong><br>
+            Probeer de Strava verbinding opnieuw in de app.
+        </div>
+    </div>
+
+    <script>
+        // Haal OAuth parameters op
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const error = urlParams.get('error');
+        const scope = urlParams.get('scope');
+
+        console.log('Strava callback received:', { code, error, scope });
+
+        if (error) {
+            // Toon error
+            document.getElementById('error').style.display = 'block';
+            document.querySelector('.spinner').style.display = 'none';
+            console.error('Strava OAuth error:', error);
+        } else if (code) {
+            // Succes - redirect naar app
+            const deepLink = `runamigo://auth?code=${encodeURIComponent(code)}&scope=${encodeURIComponent(scope || '')}`;
+            
+            console.log('Redirecting to app:', deepLink);
+            
+            // Probeer direct te redirecten
+            window.location.href = deepLink;
+            
+            // Fallback: probeer na 1 seconde opnieuw
+            setTimeout(() => {
+                try {
+                    window.location.href = deepLink;
+                } catch (e) {
+                    console.error('Deep link failed:', e);
+                    // Toon instructies aan gebruiker
+                    document.querySelector('h1').textContent = 'Bijna klaar!';
+                    document.querySelector('p').innerHTML = 'Open de Runamigo app handmatig om door te gaan.<br><small>De verbinding is succesvol!</small>';
+                    document.querySelector('.spinner').style.display = 'none';
+                }
+            }, 1000);
+            
+            // Fallback: sluit venster na 3 seconden
+            setTimeout(() => {
+                try {
+                    window.close();
+                } catch (e) {
+                    // Kan niet sluiten, toon bericht
+                    console.log('Cannot close window automatically');
+                }
+            }, 3000);
+            
+        } else {
+            // Geen code ontvangen
+            document.getElementById('error').style.display = 'block';
+            document.querySelector('.spinner').style.display = 'none';
+            console.error('No authorization code received');
+        }
+    </script>
+</body>
+</html> 
