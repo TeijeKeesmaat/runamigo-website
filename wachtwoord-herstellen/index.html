@@ -3,167 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wachtwoord Resetten - Runamigo</title>
-    <style>
-        @font-face {
-            font-family: 'FilsonProHeavy';
-            src: url('FilsonProHeavy.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'OpenSans-Regular';
-            src: url('OpenSans-Regular.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'OpenSans-SemiBold';
-            src: url('OpenSans-SemiBold.ttf') format('truetype');
-            font-weight: 600;
-            font-style: normal;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'OpenSans-Regular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #FFFFFF;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: #FFFFFF;
-            border-radius: 16px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-        }
-
-        .logo {
-            width: 150px;
-            height: auto;
-            margin: 0 auto 30px auto;
-            display: block;
-        }
-
-        h1 {
-            color: #000000;
-            margin-bottom: 20px;
-            font-size: 24px;
-            font-family: 'FilsonProHeavy', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-weight: normal;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #000000;
-            font-family: 'OpenSans-Regular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            font-weight: 600;
-        }
-
-        input[type="password"] {
-            width: 100%;
-            padding: 16px;
-            border: 2px solid #E0E0E0;
-            border-radius: 12px;
-            font-size: 16px;
-            font-family: 'OpenSans-Regular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: border-color 0.3s ease;
-        }
-
-        input[type="password"]:focus {
-            outline: none;
-            border-color: #19A5FF;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 16px;
-            background: #19A5FF;
-            color: #FFFFFF;
-            border: none;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 700;
-            font-family: 'OpenSans-SemiBold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 2px 8px rgba(25, 165, 255, 0.25);
-        }
-
-        .btn:hover {
-            background: #1565C0;
-        }
-
-        .btn:disabled {
-            background: #E0E0E0;
-            color: #757575;
-            cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        .message {
-            margin-top: 20px;
-            padding: 16px;
-            border-radius: 12px;
-            font-weight: 600;
-            font-family: 'OpenSans-SemiBold', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .success {
-            background: #E8F5E8;
-            color: #4CAF50;
-            border: 1px solid #4CAF50;
-        }
-
-        .error {
-            background: #FFEBEE;
-            color: #E53935;
-            border: 1px solid #E53935;
-        }
-
-        .loading {
-            background: #F5F5F5;
-            color: #757575;
-            border: 1px solid #E0E0E0;
-        }
-
-        .requirements {
-            text-align: left;
-            margin-top: 10px;
-            font-size: 14px;
-            color: #757575;
-            font-family: 'OpenSans-Regular', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .requirements ul {
-            margin-left: 20px;
-            margin-top: 5px;
-        }
-    </style>
+    <title>Wachtwoord Herstellen - Runamigo</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
 </head>
-<body>
+<body class="content-page">
+    <header>
+        <div class="container">
+            <a href="/" class="header-logo">
+                <img src="../assets/logo.svg" alt="Runamigo logo" width="auto" height="32">
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu openen">
+                <i class='bx bx-menu'></i>
+            </button>
+            <nav class="header-nav" id="headerNav">
+                <a href="/privacybeleid.html" class="header-link">Privacybeleid</a>
+                <a href="/algemene-voorwaarden.html" class="header-link">Algemene Voorwaarden</a>
+                <a href="https://tally.so/r/3EMJKX" class="header-cta" target="_blank" rel="noopener">Aanmelden</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="container">
-        <img src="logo.svg" alt="Runamigo" class="logo">
+        <h1>Wachtwoord Herstellen</h1>
         
         <div id="loading-state">
             <h1>Wachtwoord Resetten</h1>
@@ -212,6 +75,21 @@
 
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const headerNav = document.getElementById('headerNav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            headerNav.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!headerNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                headerNav.classList.remove('active');
+            }
+        });
+
         // Supabase configuratie
         const SUPABASE_URL = 'https://hbacbrbjsoncfxjnypyf.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhiYWNicmJqc29uY2Z4am55cHlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4NTQ4NDcsImV4cCI6MjA1OTQzMDg0N30.SkA_1TqQ1XXxVYP0kL-redQzx6bGyBMUoyYRo-zQOo4';
@@ -328,5 +206,100 @@
         // Start de applicatie
         init();
     </script>
+    <style>
+        /* Form styling */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .requirements {
+            margin-top: 8px;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .requirements ul {
+            margin: 8px 0 0 0;
+            padding-left: 20px;
+        }
+
+        .requirements li {
+            margin-bottom: 4px;
+        }
+
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .message {
+            padding: 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-weight: 500;
+        }
+
+        .message.loading {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .message.success {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .message.error {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        /* Hide duplicated h1 in states */
+        #loading-state h1,
+        #reset-form h1,
+        #error-state h1 {
+            display: none;
+        }
+    </style>
 </body>
 </html> 

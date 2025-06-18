@@ -1,95 +1,41 @@
-# RunAmigo.nl Website Deployment Guide
+# Runamigo Website Deployment Guide
 
-## Wat je hebt:
-- Domein: runamigo.nl 
-- Website bestanden: index.html
-- App is al geconfigureerd voor https://runamigo.nl
+## Structuur
 
-## Doel:
-Je website live krijgen op https://runamigo.nl zodat wachtwoord reset emails werken.
+```
+website/
+├── assets/
+│   ├── logo.svg
+│   └── fonts/
+│       ├── FilsonProHeavy.otf
+│       ├── OpenSans-Regular.ttf
+│       └── OpenSans-SemiBold.ttf
+├── css/
+│   └── style.css
+├── index.html
+├── privacybeleid.html
+├── algemene-voorwaarden.html
+├── wachtwoord-herstellen/
+│   └── index.html
+├── ... (overige bestanden)
+```
 
----
+- Alle fonts en het logo staan in `assets/` en `assets/fonts/`.
+- Centrale styling staat in `css/style.css`.
+- Alle HTML-bestanden verwijzen naar deze centrale locaties.
 
-## AANBEVOLEN: Netlify (Gratis & Eenvoudig)
+## Deployen
 
-### Tijd: 10 minuten setup + 1-24 uur DNS
-### Kosten: Gratis
+### Aanbevolen: Vercel of Netlify
+
+1. Upload de hele map `website` naar Vercel of Netlify.
+2. Je hoeft niets aan te passen aan de paden; alles werkt direct door de centrale structuur.
+3. Je site is bereikbaar op je domein (zoals runamigo.nl).
+
+### Let op
+- Controleer na uploaden of alle pagina's (inclusief wachtwoord-herstellen, privacybeleid, algemene voorwaarden) werken en de juiste styling en logo tonen.
+- Bij nieuwe pagina's: verwijs altijd naar assets/ en css/ voor logo, fonts en styling.
+
 ### Technische kennis: Minimaal
-
-Waarom Netlify?
-- Snelste en eenvoudigste setup
-- Automatische HTTPS/SSL
-- Gratis hosting
-- Drag & drop deployment
-
-### Stappen:
-1. Ga naar netlify.com
-2. Maak gratis account
-3. Sleep website folder naar Netlify
-4. Voeg custom domain runamigo.nl toe
-5. Volg DNS instructies
-
----
-
-## Alternatief: Vercel (Gratis)
-
-### Tijd: 10 minuten setup + 1-24 uur DNS
-### Kosten: Gratis
-### Technische kennis: Minimaal
-
-### Stappen:
-1. Ga naar vercel.com
-2. Maak gratis account
-3. Upload bestanden
-4. Voeg custom domain toe
-
----
-
-## Traditionele Hosting (Betaald)
-
-### Tijd: 30 minuten setup + 1-4 uur DNS
-### Kosten: 2-8 euro/maand
-### Technische kennis: Gemiddeld
-
-Wanneer kiezen:
-- Je wilt volledige controle
-- Je plant meer website functionaliteit
-- Je wilt professionele email adressen
-
-Nederlandse providers:
-- TransIP
-- Hostnet
-- Vimexx
-- SiteGround
-
----
-
-## Snelle Start (Aanbevolen)
-
-### Stap 1: Kies Netlify
-1. Ga naar netlify.com
-2. Maak gratis account
-3. Sleep website folder naar Netlify
-4. Voeg custom domain runamigo.nl toe
-
-### Stap 2: DNS instellen
-1. Log in bij je domein provider
-2. Voeg DNS records toe zoals Netlify aangeeft
-3. Wacht op propagatie (1-24 uur)
-
-### Stap 3: Testen
-1. Ga naar https://runamigo.nl
-2. Test wachtwoord reset in je app
-3. Controleer of email link naar je website gaat
-
----
-
-## Hulp nodig?
-
-Waar heb je runamigo.nl gekocht?
-- TransIP, Hostnet, GoDaddy, etc.
-- Ik kan specifieke DNS instructies geven
-
-Problemen?
-- Check DNS propagatie: whatsmydns.net
-- Test SSL: ssllabs.com 
+- Je hoeft alleen de map te uploaden en je domein te koppelen.
+- Zie de README of Vercel/Netlify docs voor meer details. 
