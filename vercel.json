@@ -2,11 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "*.html",
+      "src": "**/*",
       "use": "@vercel/static"
     }
   ],
   "routes": [
+    {
+      "src": "/algemene-voorwaarden",
+      "dest": "/algemene-voorwaarden.html"
+    },
+    {
+      "src": "/privacybeleid",
+      "dest": "/privacybeleid.html"
+    },
     {
       "src": "/(.*)",
       "dest": "/$1"
