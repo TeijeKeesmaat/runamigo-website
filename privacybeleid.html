@@ -99,16 +99,26 @@
         </div>
     </footer>
     <script>
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const headerNav = document.getElementById('headerNav');
-        mobileMenuBtn.addEventListener('click', () => {
-            headerNav.classList.toggle('active');
-        });
-        document.addEventListener('click', (e) => {
-            if (!headerNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                headerNav.classList.remove('active');
-            }
-        });
+        fetch('/header.html')
+          .then(res => res.text())
+          .then(html => {
+            document.getElementById('site-header').outerHTML = html;
+            // Heractiveer menu functionaliteit
+            setTimeout(() => {
+              const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+              const headerNav = document.getElementById('headerNav');
+              if (mobileMenuBtn && headerNav) {
+                mobileMenuBtn.addEventListener('click', () => {
+                  headerNav.classList.toggle('active');
+                });
+                document.addEventListener('click', (e) => {
+                  if (!headerNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    headerNav.classList.remove('active');
+                  }
+                });
+              }
+            }, 0);
+          });
     </script>
 </body>
 </html> 

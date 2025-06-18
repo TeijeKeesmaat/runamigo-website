@@ -24,55 +24,64 @@
             </nav>
         </div>
     </header>
-
-    <div class="container">
-        <h1>Wachtwoord Herstellen</h1>
-        
-        <div id="loading-state">
-            <h1>Wachtwoord Resetten</h1>
-            <div class="message loading">
-                Bezig met laden...
+    <main>
+        <div class="container">
+            <h1>Wachtwoord Herstellen</h1>
+            
+            <div id="loading-state">
+                <h1>Wachtwoord Resetten</h1>
+                <div class="message loading">
+                    Bezig met laden...
+                </div>
             </div>
-        </div>
 
-        <div id="reset-form" style="display: none;">
-            <h1>Nieuw Wachtwoord Instellen</h1>
-            <form id="passwordForm">
-                <div class="form-group">
-                    <label for="password">Nieuw Wachtwoord</label>
-                    <input type="password" id="password" required>
-                    <div class="requirements">
-                        <p>Wachtwoord moet bevatten:</p>
-                        <ul>
-                            <li>Minimaal 8 tekens</li>
-                            <li>Minimaal 1 hoofdletter</li>
-                            <li>Minimaal 1 kleine letter</li>
-                            <li>Minimaal 1 cijfer</li>
-                        </ul>
+            <div id="reset-form" style="display: none;">
+                <h1>Nieuw Wachtwoord Instellen</h1>
+                <form id="passwordForm">
+                    <div class="form-group">
+                        <label for="password">Nieuw Wachtwoord</label>
+                        <input type="password" id="password" required>
+                        <div class="requirements">
+                            <p>Wachtwoord moet bevatten:</p>
+                            <ul>
+                                <li>Minimaal 8 tekens</li>
+                                <li>Minimaal 1 hoofdletter</li>
+                                <li>Minimaal 1 kleine letter</li>
+                                <li>Minimaal 1 cijfer</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="confirmPassword">Bevestig Wachtwoord</label>
-                    <input type="password" id="confirmPassword" required>
-                </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Bevestig Wachtwoord</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
 
-                <button type="submit" class="btn" id="submitBtn">
-                    Wachtwoord Bijwerken
-                </button>
-            </form>
-        </div>
-
-        <div id="error-state" style="display: none;">
-            <h1>Ongeldige Link</h1>
-            <div class="message error">
-                Deze link is ongeldig of verlopen. Vraag een nieuwe wachtwoord reset aan in de app.
+                    <button type="submit" class="btn" id="submitBtn">
+                        Wachtwoord Bijwerken
+                    </button>
+                </form>
             </div>
+
+            <div id="error-state" style="display: none;">
+                <h1>Ongeldige Link</h1>
+                <div class="message error">
+                    Deze link is ongeldig of verlopen. Vraag een nieuwe wachtwoord reset aan in de app.
+                </div>
+            </div>
+
+            <div id="message-container"></div>
         </div>
-
-        <div id="message-container"></div>
-    </div>
-
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="/privacybeleid.html" class="footer-link">Privacybeleid</a>
+                <a href="/algemene-voorwaarden.html" class="footer-link">Algemene Voorwaarden</a>
+            </div>
+            <p class="copyright">© 2024 Runamigo. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
         // Mobile menu toggle

@@ -72,6 +72,12 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .container {
+    /* padding-top: 64px; -- VERWIJDERD, vervangen door main/section padding */
+  }
+}
+
 h1, h2, h3 {
   font-family: 'FilsonProHeavy', 'Open Sans', Arial, sans-serif;
   font-weight: bold;
@@ -102,7 +108,7 @@ a:hover {
 }
 
 /* ==========================================================================
-   Header
+   Header - Unified Style for All Pages
    ========================================================================== */
 header {
     position: fixed;
@@ -111,8 +117,12 @@ header {
     width: 100%;
     height: 72px;
     z-index: 1000;
-    background: #fff;
-    border-bottom: 1px solid #eaeaea;
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
 }
 
 header .container {
@@ -120,6 +130,10 @@ header .container {
     align-items: center;
     justify-content: space-between;
     height: 100%;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 
 .header-logo {
@@ -130,6 +144,18 @@ header .container {
 .header-logo img {
     height: 32px;
     width: auto;
+}
+
+.header-logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--text-color);
+    font-family: 'FilsonProHeavy', 'Open Sans', Arial, sans-serif;
+}
+
+.header-logo-text .highlight {
+    color: #ef4444;
 }
 
 .header-nav {
@@ -144,6 +170,9 @@ header .container {
     color: var(--text-color);
     text-decoration: none;
     transition: color 0.2s ease;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
 }
 
 .header-link:hover {
@@ -161,6 +190,8 @@ header .container {
     border-radius: 8px;
     font-size: 16px;
     transition: background-color 0.2s ease;
+    margin: 0;
+    line-height: 1;
 }
 
 .header-cta:hover {
@@ -179,8 +210,22 @@ header .container {
 
 @media (max-width: 768px) {
   header {
-    height: 64px;
+    height: 48px;
+    padding: 0 12px;
   }
+  
+  header .container {
+    padding: 0 16px;
+  }
+  
+  .header-logo img {
+    height: 20px;
+  }
+  
+  .header-logo-text {
+    font-size: 18px;
+  }
+  
   .mobile-menu-btn {
     display: block;
   }
@@ -612,22 +657,6 @@ footer {
   line-height: 1.6;
 }
 
-/* Remove box styling from terms and privacy pages */
-body:not(.homepage) .container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 72px 24px 0 24px;
-  background: none;
-  box-shadow: none;
-  border-radius: 0;
-}
-
-@media (max-width: 768px) {
-  body:not(.homepage) .container {
-    padding: 64px 16px 0 16px;
-  }
-}
-
 /* Hero and USPs sections */
 .hero-content,
 .usps {
@@ -638,13 +667,12 @@ body:not(.homepage) .container {
 }
 
 /* Content pages (Privacy, Terms) */
-.content-page {
-    padding-top: 0;
 }
 
 .content-page .container {
     max-width: 800px;
     padding-bottom: 64px;
+    padding-top: 0; /* Remove container padding since content-page has it */
 }
 
 .content-page h1 {
@@ -688,11 +716,12 @@ body:not(.homepage) .container {
 
 @media (max-width: 768px) {
     .content-page {
-        padding-top: 0;
+        padding-top: 64px; /* Smaller space on mobile */
     }
     
     .content-page .container {
         padding-bottom: 32px;
+        padding-top: 0;
     }
 
     .content-page h1 {
@@ -708,15 +737,6 @@ body:not(.homepage) .container {
     }
 }
 
-/* Header positioning voor main content */
-.hero {
-    padding-top: 72px;
-}
-
-main {
-    padding-top: 72px;
-}
-
 @media (max-width: 768px) {
     .hero {
         padding-top: 64px;
@@ -724,5 +744,16 @@ main {
     
     main {
         padding-top: 64px;
+    }
+}
+
+/* Content spacing for fixed header */
+main, section:not(.hero) {
+    padding-top: 100px; /* Ruimte voor fixed header */
+}
+
+@media (max-width: 768px) {
+    main, section:not(.hero) {
+        padding-top: 48px; /* Kleinere ruimte op mobiel */
     }
 } 
