@@ -16,6 +16,10 @@
       "dest": "/privacybeleid.html"
     },
     {
+      "src": "/auth/callback",
+      "dest": "/auth/callback.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
