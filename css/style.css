@@ -1,24 +1,6 @@
-@font-face {
-  font-family: 'FilsonProHeavy';
-  src: url('../assets/fonts/FilsonProHeavy.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'OpenSans-Regular';
-  src: url('../assets/fonts/OpenSans-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'OpenSans-SemiBold';
-  src: url('../assets/fonts/OpenSans-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
+/* Adobe Fonts worden geladen via Adobe's CDN in index.html */
+/* Verwijder de lokale @font-face declaraties en gebruik Adobe Fonts class names */
+
 :root {
   --primary-color: #19A5FF;
   --primary-dark: #1565C0;
@@ -36,7 +18,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: 'OpenSans-Regular', Arial, sans-serif;
+  font-family: 'open-sans', Arial, sans-serif;
   background: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
@@ -79,7 +61,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: 'FilsonProHeavy', 'Open Sans', Arial, sans-serif;
+  font-family: 'filson-pro', 'open-sans', Arial, sans-serif;
   font-weight: bold;
   letter-spacing: 0.01em;
   color: var(--text-color);
@@ -151,7 +133,7 @@ header .container {
     font-weight: 700;
     line-height: 1;
     color: var(--text-color);
-    font-family: 'FilsonProHeavy', 'Open Sans', Arial, sans-serif;
+    font-family: 'filson-pro', 'open-sans', Arial, sans-serif;
 }
 
 .header-logo-text .highlight {
@@ -667,8 +649,6 @@ footer {
 }
 
 /* Content pages (Privacy, Terms) */
-}
-
 .content-page .container {
     max-width: 800px;
     padding-bottom: 64px;
@@ -678,21 +658,21 @@ footer {
 .content-page h1 {
     font-size: 32px;
     margin-bottom: 24px;
-    font-family: 'FilsonProHeavy', 'Open Sans', Arial, sans-serif;
+    font-family: 'filson-pro', 'open-sans', Arial, sans-serif;
 }
 
 .content-page h2 {
     font-size: 24px;
     margin-top: 40px;
     margin-bottom: 16px;
-    font-family: 'FilsonProHeavy', 'Open Sans', Arial, sans-serif;
+    font-family: 'filson-pro', 'open-sans', Arial, sans-serif;
 }
 
 .content-page h3 {
     font-size: 20px;
     margin-top: 32px;
     margin-bottom: 12px;
-    font-family: 'FilsonProHeavy', 'Open Sans', Arial, sans-serif;
+    font-family: 'filson-pro', 'open-sans', Arial, sans-serif;
 }
 
 .content-page p,

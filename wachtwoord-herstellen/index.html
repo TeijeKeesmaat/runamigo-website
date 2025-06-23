@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wachtwoord Herstellen - Runamigo</title>
+    
+    <!-- Adobe Fonts -->
+    <link rel="stylesheet" href="https://use.typekit.net/teo0xwk.css">
+    
     <link rel="stylesheet" href="../css/style.css">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="../assets/favicon.png">
@@ -100,8 +104,8 @@
         });
 
         // Supabase configuratie
-        const SUPABASE_URL = 'https://hbacbrbjsoncfxjnypyf.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhiYWNicmJqc29uY2Z4am55cHlmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM4NTQ4NDcsImV4cCI6MjA1OTQzMDg0N30.SkA_1TqQ1XXxVYP0kL-redQzx6bGyBMUoyYRo-zQOo4';
+        const SUPABASE_URL = '{{SUPABASE_URL}}';
+        const SUPABASE_ANON_KEY = '{{SUPABASE_ANON_KEY}}';
 
         const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
