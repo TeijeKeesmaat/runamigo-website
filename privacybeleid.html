@@ -29,7 +29,7 @@
         </div>
     </header>
     <main>
-        <div class="container">
+        <div class="content-container">
             <h1>Privacybeleid Runamigo</h1>
             <p class="last-updated">Laatst bijgewerkt: 18-06-2025</p>
             <h2>1. Inleiding</h2>
@@ -103,26 +103,16 @@
         </div>
     </footer>
     <script>
-        fetch('/header.html')
-          .then(res => res.text())
-          .then(html => {
-            document.getElementById('site-header').outerHTML = html;
-            // Heractiveer menu functionaliteit
-            setTimeout(() => {
-              const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-              const headerNav = document.getElementById('headerNav');
-              if (mobileMenuBtn && headerNav) {
-                mobileMenuBtn.addEventListener('click', () => {
-                  headerNav.classList.toggle('active');
-                });
-                document.addEventListener('click', (e) => {
-                  if (!headerNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                    headerNav.classList.remove('active');
-                  }
-                });
-              }
-            }, 0);
-          });
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const headerNav = document.getElementById('headerNav');
+        mobileMenuBtn.addEventListener('click', () => {
+            headerNav.classList.toggle('active');
+        });
+        document.addEventListener('click', (e) => {
+            if (!headerNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                headerNav.classList.remove('active');
+            }
+        });
     </script>
 </body>
 </html> 

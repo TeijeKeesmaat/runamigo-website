@@ -26,7 +26,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 .container {
-  width: 100%;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -93,29 +92,29 @@ a:hover {
    Header - Unified Style for All Pages
    ========================================================================== */
 header {
+    background-color: #f9f9f9;
+    padding: 0.75rem 0;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 72px;
     z-index: 1000;
-    background: #f9fafb;
     border-bottom: 1px solid #e5e7eb;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 16px;
+    justify-content: center;
+    overflow: hidden;
 }
 
 header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100%;
-    width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 1rem;
+    height: 64px;
+    width: 100%;
 }
 
 .header-logo {
@@ -125,7 +124,9 @@ header .container {
 
 .header-logo img {
     height: 32px;
-    width: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
 }
 
 .header-logo-text {
@@ -134,6 +135,8 @@ header .container {
     line-height: 1;
     color: var(--text-color);
     font-family: 'filson-pro', 'open-sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .header-logo-text .highlight {
@@ -142,42 +145,23 @@ header .container {
 
 .header-nav {
     display: flex;
+    gap: 1.5rem;
     align-items: center;
-    gap: 32px;
 }
 
 .header-link {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--text-color);
     text-decoration: none;
-    transition: color 0.2s ease;
-    padding: 0;
-    margin: 0;
-    line-height: 1;
-}
-
-.header-link:hover {
-    color: var(--primary-color);
+    color: #000;
+    font-weight: 500;
 }
 
 .header-cta {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 20px;
-    background: var(--primary-color);
+    background-color: #1da1f2;
     color: white;
-    text-decoration: none;
-    font-weight: 600;
+    padding: 0.5rem 1rem;
     border-radius: 8px;
-    font-size: 16px;
-    transition: background-color 0.2s ease;
-    margin: 0;
-    line-height: 1;
-}
-
-.header-cta:hover {
-    background: var(--primary-color-dark);
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .mobile-menu-btn {
@@ -193,7 +177,7 @@ header .container {
 @media (max-width: 768px) {
   header {
     height: 48px;
-    padding: 0 12px;
+    padding: 0;
   }
   
   header .container {
@@ -473,7 +457,8 @@ header .container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 32px;
-  margin-bottom: 96px;
+  margin-bottom: 0;
+  padding-bottom: 96px;
 }
 
 .usp-card {
@@ -515,10 +500,14 @@ header .container {
 }
 
 .usp-title {
-  font-family: 'FilsonProHeavy', Arial, sans-serif;
+  font-family: 'FilsonProMedium', 'filson-pro', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  color: var(--text-color);
   font-size: 1.2em;
   margin-bottom: 16px;
-  color: var(--text-color);
+  margin-top: 0;
+  line-height: 1.2;
 }
 
 .usp-desc {
@@ -650,9 +639,8 @@ footer {
 
 /* Content pages (Privacy, Terms) */
 .content-page .container {
-    max-width: 800px;
-    padding-bottom: 64px;
-    padding-top: 0; /* Remove container padding since content-page has it */
+    max-width: 1200px;
+    padding-top: 0px;
 }
 
 .content-page h1 {
@@ -695,8 +683,8 @@ footer {
 }
 
 @media (max-width: 768px) {
-    .content-page {
-        padding-top: 64px; /* Smaller space on mobile */
+    .content-page main {
+        padding-top: 64px; /* Smaller space on mobile - only for main content, not entire page */
     }
     
     .content-page .container {
@@ -729,11 +717,100 @@ footer {
 
 /* Content spacing for fixed header */
 main, section:not(.hero) {
-    padding-top: 100px; /* Ruimte voor fixed header */
+    padding-top: 72px; /* Exact de hoogte van de header */
 }
 
 @media (max-width: 768px) {
     main, section:not(.hero) {
-        padding-top: 48px; /* Kleinere ruimte op mobiel */
+        padding-top: 48px; /* Exact de hoogte van de mobile header */
     }
+}
+
+/* OF als alternatief, gebruik margin-top in plaats van padding-top: */
+main, section:not(.hero) {
+    margin-top: 72px; /* Exact de hoogte van de header */
+    padding-top: 0; /* Reset eventuele andere padding */
+}
+
+@media (max-width: 768px) {
+    main, section:not(.hero) {
+        margin-top: 48px; /* Exact de hoogte van de mobile header */
+    }
+}
+
+.content-page .container h1 {
+    margin-top: 40px;
+}
+
+.content-page .content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 64px 24px;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+@media (max-width: 900px) {
+    .content-page .content-container {
+        max-width: 95vw;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .content-page .content-container {
+        max-width: 100vw;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 24px;
+        padding-bottom: 32px;
+    }
+}
+
+.content-page .content-container h1,
+.content-page .content-container h2,
+.content-page .content-container h3,
+.usp-title {
+    font-family: 'FilsonProMedium', 'filson-pro', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.015em;
+    color: var(--text-color);
+    line-height: 1.2;
+}
+
+.content-page .content-container h1 {
+    font-size: 2.2em;
+    margin-top: 0;
+    margin-bottom: 0.6em;
+}
+
+.content-page .content-container h2 {
+    font-size: 1.4em;
+    margin-top: 2em;
+    margin-bottom: 0.5em;
+}
+
+.content-page .content-container h3 {
+    font-size: 1.1em;
+    margin-top: 1.5em;
+    margin-bottom: 0.4em;
+}
+
+.content-page .content-container p,
+.content-page .content-container li {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+.content-page .content-container ul {
+    margin-bottom: 16px;
+    padding-left: 20px;
+}
+
+header, .header-logo, .header-link, .header-cta, .header-nav, .header-logo-text {
+    font-family: 'filson-pro', sans-serif;
+    font-weight: 400;
 } 
