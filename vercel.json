@@ -20,6 +20,10 @@
       "dest": "/auth/callback.html"
     },
     {
+      "src": "/test-autofill",
+      "dest": "/test-autofill.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/$1"
     }
