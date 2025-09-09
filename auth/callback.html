@@ -89,37 +89,35 @@
             document.getElementById('error').style.display = 'block';
             document.querySelector('.spinner').style.display = 'none';
             console.error('Strava OAuth error:', error);
-        } else if (code) {
-            // Succes - redirect naar app
-            const deepLink = `runamigo://auth?code=${encodeURIComponent(code)}&scope=${encodeURIComponent(scope || '')}`;
             
-            console.log('Redirecting to app:', deepLink);
-            
-            // Probeer direct te redirecten
-            window.location.href = deepLink;
-            
-            // Fallback: probeer na 1 seconde opnieuw
-            setTimeout(() => {
-                try {
-                    window.location.href = deepLink;
-                } catch (e) {
-                    console.error('Deep link failed:', e);
-                    // Toon instructies aan gebruiker
-                    document.querySelector('h1').textContent = 'Bijna klaar!';
-                    document.querySelector('p').innerHTML = 'Open de Runamigo app handmatig om door te gaan.<br><small>De verbinding is succesvol!</small>';
-                    document.querySelector('.spinner').style.display = 'none';
-                }
-            }, 1000);
-            
-            // Fallback: sluit venster na 3 seconden
+            // Probeer venster te sluiten na error
             setTimeout(() => {
                 try {
                     window.close();
                 } catch (e) {
-                    // Kan niet sluiten, toon bericht
-                    console.log('Cannot close window automatically');
+                    console.log('Cannot close window after error');
                 }
-            }, 3000);
+            }, 2000);
+        } else if (code) {
+            // Succes - toon bericht en sluit venster
+            console.log('Authorization successful, closing window...');
+            
+            // Toon succes bericht
+            document.querySelector('h1').textContent = 'Strava Verbonden!';
+            document.querySelector('p').textContent = 'Je wordt automatisch teruggeleid naar de Runamigo app...';
+            
+            // Sluit venster direct
+            setTimeout(() => {
+                try {
+                    window.close();
+                } catch (e) {
+                    console.log('Cannot close window automatically');
+                    // Toon instructies aan gebruiker
+                    document.querySelector('h1').textContent = 'Klaar!';
+                    document.querySelector('p').innerHTML = 'Je kunt dit venster nu sluiten.<br><small>De Strava verbinding is succesvol!</small>';
+                    document.querySelector('.spinner').style.display = 'none';
+                }
+            }, 500);
             
         } else {
             // Geen code ontvangen
