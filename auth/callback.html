@@ -92,60 +92,70 @@
         } else if (code) {
             // Succes - redirect naar app
             const deepLink = `runamigo://auth?code=${encodeURIComponent(code)}&scope=${encodeURIComponent(scope || '')}`;
-            console.log('Prepared deep link for app:', deepLink);
-
-            // Close Strava window (if opener exists) to prevent bounce
-            try {
-                if (window.opener && !window.opener.closed) {
-                    window.opener.postMessage('strava-auth-finished', '*');
+            
+            console.log('Redirecting to app:', deepLink);
+            
+            // Probeer direct te redirecten
+            window.location.href = deepLink;
+            
+            // Probeer browser te sluiten direct na redirect
+            setTimeout(() => {
+                try {
+                    window.close();
+                } catch (e) {
+                    console.log('Cannot close window immediately, trying alternative methods');
                 }
-            } catch (e) {
-                console.warn('Unable to notify opener:', e);
-            }
-
-            // Give the in-app browser a moment to finalize and close
-            const attemptDeepLink = () => {
+            }, 100);
+            
+            // Fallback: probeer na 500ms opnieuw
+            setTimeout(() => {
                 try {
                     window.location.href = deepLink;
                 } catch (e) {
                     console.error('Deep link failed:', e);
                 }
-            };
-
-            // Stagger attempts to reduce flicker/bounce
-            setTimeout(attemptDeepLink, 350);
-            setTimeout(attemptDeepLink, 900);
-            setTimeout(attemptDeepLink, 1600);
-
-            // Provide a manual fallback button if automatic open fails
-            const addManualOpen = () => {
-                if (document.getElementById('manual-open')) return;
-                const btn = document.createElement('button');
-                btn.id = 'manual-open';
-                btn.textContent = 'Open Runamigo app';
-                btn.style.marginTop = '12px';
-                btn.style.padding = '10px 14px';
-                btn.style.borderRadius = '10px';
-                btn.style.border = 'none';
-                btn.style.background = '#19A5FF';
-                btn.style.color = 'white';
-                btn.style.fontWeight = '600';
-                btn.onclick = attemptDeepLink;
-                document.querySelector('.container').appendChild(btn);
-            };
-
+            }, 500);
+            
+            // Probeer browser te sluiten na 500ms
             setTimeout(() => {
                 try {
                     window.close();
                 } catch (e) {
-                    console.log('Cannot close window automatically');
-                    document.querySelector('h1').textContent = 'Bijna klaar!';
-                    document.querySelector('p').innerHTML = 'Open de Runamigo app om door te gaan.';
-                    document.querySelector('.spinner').style.display = 'none';
-                    addManualOpen();
+                    console.log('Cannot close window after 500ms');
                 }
-            }, 2000);
-
+            }, 600);
+            
+            // Fallback: probeer na 1 seconde opnieuw
+            setTimeout(() => {
+                try {
+                    window.location.href = deepLink;
+                } catch (e) {
+                    console.error('Deep link failed:', e);
+                }
+            }, 1000);
+            
+            // Probeer browser te sluiten na 1 seconde
+            setTimeout(() => {
+                try {
+                    window.close();
+                } catch (e) {
+                    console.log('Cannot close window after 1s');
+                }
+            }, 1100);
+            
+            // Laatste poging om browser te sluiten na 1.5 seconden
+            setTimeout(() => {
+                try {
+                    window.close();
+                } catch (e) {
+                    // Kan niet sluiten, toon bericht
+                    console.log('Cannot close window automatically after all attempts');
+                    document.querySelector('h1').textContent = 'Bijna klaar!';
+                    document.querySelector('p').innerHTML = 'Open de Runamigo app handmatig om door te gaan.<br><small>De verbinding is succesvol!</small>';
+                    document.querySelector('.spinner').style.display = 'none';
+                }
+            }, 1500);
+            
         } else {
             // Geen code ontvangen
             document.getElementById('error').style.display = 'block';
