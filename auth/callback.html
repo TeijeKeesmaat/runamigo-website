@@ -98,63 +98,18 @@
             // Probeer direct te redirecten
             window.location.href = deepLink;
             
-            // Probeer browser te sluiten direct na redirect
+            // Probeer het venster te sluiten. Dit werkt mogelijk niet in alle browsers,
+            // maar de app handelt het sluiten van de browser nu zelf af.
             setTimeout(() => {
                 try {
                     window.close();
                 } catch (e) {
-                    console.log('Cannot close window immediately, trying alternative methods');
-                }
-            }, 100);
-            
-            // Fallback: probeer na 500ms opnieuw
-            setTimeout(() => {
-                try {
-                    window.location.href = deepLink;
-                } catch (e) {
-                    console.error('Deep link failed:', e);
-                }
-            }, 500);
-            
-            // Probeer browser te sluiten na 500ms
-            setTimeout(() => {
-                try {
-                    window.close();
-                } catch (e) {
-                    console.log('Cannot close window after 500ms');
-                }
-            }, 600);
-            
-            // Fallback: probeer na 1 seconde opnieuw
-            setTimeout(() => {
-                try {
-                    window.location.href = deepLink;
-                } catch (e) {
-                    console.error('Deep link failed:', e);
-                }
-            }, 1000);
-            
-            // Probeer browser te sluiten na 1 seconde
-            setTimeout(() => {
-                try {
-                    window.close();
-                } catch (e) {
-                    console.log('Cannot close window after 1s');
-                }
-            }, 1100);
-            
-            // Laatste poging om browser te sluiten na 1.5 seconden
-            setTimeout(() => {
-                try {
-                    window.close();
-                } catch (e) {
-                    // Kan niet sluiten, toon bericht
-                    console.log('Cannot close window automatically after all attempts');
+                    console.log('Cannot close window automatically, app will handle it.');
                     document.querySelector('h1').textContent = 'Bijna klaar!';
-                    document.querySelector('p').innerHTML = 'Open de Runamigo app handmatig om door te gaan.<br><small>De verbinding is succesvol!</small>';
+                    document.querySelector('p').innerHTML = 'Ga terug naar de Runamigo app om door te gaan.<br><small>De verbinding is succesvol!</small>';
                     document.querySelector('.spinner').style.display = 'none';
                 }
-            }, 1500);
+            }, 500);
             
         } else {
             // Geen code ontvangen
