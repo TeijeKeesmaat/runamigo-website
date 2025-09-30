@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Runamigo – Download</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon.png">
+    <link rel="shortcut icon" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+    <meta name="theme-color" content="#19A5FF">
+
+    <style>
+        body.download-page { background: #FFFFFF; color: #111111; font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji'; }
+        .download-page .site-frame { border: 0 !important; border-image: none !important; }
+        .page-wrap { max-width: 960px; margin: 0 auto; padding: 16px; padding-bottom: 120px; }
+        .notice { font-size: 13px; opacity: 0.85; margin: 8px 0 12px; text-align: left; }
+        .tutorial { background: transparent; border-radius: 0; padding: 0; margin: 8px 0 12px; }
+        .tutorial img { width: 100%; height: auto; display: block; border-radius: 0; }
+        .fixed-cta { position: fixed; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-top: 1px solid #E5E7EB; box-shadow: 0 -6px 20px rgba(0,0,0,0.08); padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); z-index: 50; }
+        .fixed-cta .inner { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
+        .fixed-cta .app-store-btn { background: #000; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+        .fixed-cta .app-store-btn img { max-width: 180px; }
+        .fixed-cta .store-subtext { text-align: center; }
+        .fixed-cta .store-subtext a { color: #6B7280; text-decoration: underline; font-weight: 700; }
+        @media (min-width: 768px) { .page-wrap { padding: 24px; } }
+    </style>
+</head>
+<body class="download-page homepage">
+    <div class="site-frame">
+        <div class="page-wrap">
+            <div class="tutorial">
+                <img src="assets/tiktok tutorial.png" alt="TikTok instructie: openen in browser">
+            </div>
+            <p class="notice">TikTok blokkeert App Store links, download Runamigo op bovenstaande manier.</p>
+        </div>
+        <div class="fixed-cta" role="complementary" aria-label="Download en wachtlijst">
+            <div class="inner">
+                <a class="app-store-btn" href="https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040">
+                    <img src="assets/Download app store knop.png" alt="Download in de App Store" width="180" height="auto">
+                </a>
+                <div class="store-subtext">
+                    <a href="https://tally.so/r/3EMJKX" target="_blank" rel="noopener">Meld je aan voor de Android wachtlijst</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            var ua = navigator.userAgent || '';
+            var isAndroid = /Android/i.test(ua);
+            var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            var appStoreUrl = 'https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040';
+            var androidRedirect = 'https://runamigo.nl/';
+
+            setTimeout(function () {
+                if (isIOS) {
+                    window.location.href = appStoreUrl;
+                } else if (isAndroid) {
+                    window.location.href = androidRedirect;
+                } else {
+                    window.location.href = appStoreUrl;
+                }
+            }, 300);
+        })();
+    </script>
+</body>
+</html>
+
+
