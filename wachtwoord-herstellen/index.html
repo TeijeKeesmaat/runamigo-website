@@ -15,7 +15,22 @@
     <link rel="icon" type="image/png" href="../assets/favicon.png">
 </head>
 <body class="content-page password-reset-page">
-
+    <div class="site-frame">
+    <header>
+        <div class="container">
+            <a href="/" class="header-logo">
+                <img src="../assets/Runamigo app icon.png" alt="Runamigo logo" width="auto" height="32">
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu openen">
+                <i class='bx bx-menu'></i>
+            </button>
+            <nav class="header-nav" id="headerNav">
+                <a href="/privacybeleid.html" class="header-link">Privacybeleid</a>
+                <a href="/algemene-voorwaarden.html" class="header-link">Algemene Voorwaarden</a>
+                <a href="https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040" class="header-cta" target="_blank" rel="noopener">Downloaden</a>
+            </nav>
+        </div>
+    </header>
     <main>
         <div class="content-container">
             <h1>Wachtwoord Herstellen</h1>
@@ -307,5 +322,25 @@
             display: none;
         }
     </style>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const headerNav = document.getElementById('headerNav');
+
+        if (mobileMenuBtn && headerNav) {
+            mobileMenuBtn.addEventListener('click', () => {
+                headerNav.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!headerNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    headerNav.classList.remove('active');
+                }
+            });
+        }
+    </script>
+    </div>
 </body>
 </html> 

@@ -32,10 +32,11 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 <body class="homepage">
+    <div class="site-frame">
     <header>
         <div class="container">
             <a href="/" class="header-logo">
-                <img src="assets/logo.svg" alt="Runamigo logo" width="auto" height="32">
+                <img src="assets/Runamigo app icon.png" alt="Runamigo logo" width="auto" height="32">
             </a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu openen">
                 <i class='bx bx-menu'></i>
@@ -43,44 +44,93 @@
             <nav class="header-nav" id="headerNav">
                 <a href="/privacybeleid.html" class="header-link">Privacybeleid</a>
                 <a href="/algemene-voorwaarden.html" class="header-link">Algemene Voorwaarden</a>
-                <a href="https://tally.so/r/3EMJKX" class="header-cta" target="_blank" rel="noopener">Aanmelden</a>
+                <a href="https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040" class="header-cta" target="_blank" rel="noopener">Downloaden</a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <img src="assets/logo.svg" alt="Runamigo" class="hero-logo">
-            <h1 class="hero-title">De app om hard te lopen met vrienden</h1>
-            <p class="hero-subtitle">Daag je vrienden uit, loop samen races en blijf gemotiveerd met Runamigo</p>
-            <a href="https://tally.so/r/3EMJKX" class="hero-cta" target="_blank" rel="noopener">
-                Meld je aan voor de wachtlijst
-                <i class='bx bx-right-arrow-alt'></i>
-            </a>
+            <div class="hero-layout">
+                <div class="hero-text">
+                    <img src="assets/logo.svg" alt="Runamigo" class="hero-logo">
+                    <h1 class="hero-title">Hardlopen met vrienden, waar je ook bent.</h1>
+                    <p class="hero-subtitle">Maak hardlopen leuker met Runamigo.</p>
+                    <div class="hero-buttons">
+                        <a href="https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040" class="app-store-btn" target="_blank" rel="noopener">
+                            <img src="assets/Download app store knop.png" alt="Download in de App Store" width="200" height="auto">
+                        </a>
+                        <div class="store-subtext">
+                            <a href="https://tally.so/r/3EMJKX" target="_blank" rel="noopener">Android wachtlijst</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual" aria-hidden="true">
+                    <img class="screen main" src="assets/Onboarding scherm 1.png" alt="Onboarding voorbeeldscherm">
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="usps">
-        <div class="usp-card">
-            <div class="usp-icon">
-                <i class='bx bx-microphone'></i>
-            </div>
-            <div class="usp-title">Onderweg praten</div>
-            <div class="usp-desc">Motivatie en gezelligheid: praat live met je vrienden tijdens het lopen, net alsof je echt samen bent.</div>
+        <div class="usps-header">
+            <h2 class="usps-title">Hardlopen is samen leuker.</h2>
+            <p class="usps-subtitle">Ontdek de features van Runamigo.</p>
         </div>
-        <div class="usp-card">
-            <div class="usp-icon">
-                <i class='bx bx-map-alt'></i>
-            </div>
-            <div class="usp-title">Live locatie & statistieken</div>
-            <div class="usp-desc">Zie elkaars locatie en prestaties realtime. Blijf op de hoogte van je eigen en andermans voortgang.</div>
+        <div class="usps-media" aria-hidden="true">
+            <img src="assets/Runamigo features.png" alt="Runamigo features" class="usps-image">
         </div>
-        <div class="usp-card">
-            <div class="usp-icon">
-                <i class='bx bx-timer'></i>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class='bx bx-microphone'></i>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Onderweg praten</h3>
+                    <p class="feature-desc">Praat met vrienden terwijl je rent, zonder te stoppen. Motiveer, moedig aan of maak de run leuker met de ingebouwde walkie-talkie.</p>
+                </div>
             </div>
-            <div class="usp-title">Inhaal-meldingen</div>
-            <div class="usp-desc">Hoor direct onderweg of je wordt ingehaald of iemand inhaalt. Blijf scherp en ga de uitdaging aan!</div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class='bx bx-map-alt'></i>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Live statistieken & locatie</h3>
+                    <p class="feature-desc">Bekijk tempo, afstand en voortgang live. Zie waar je vrienden zijn op de kaart en blijf gemotiveerd om voorop te blijven.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class='bx bx-volume-full'></i>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Audio-alerts</h3>
+                    <p class="feature-desc">Hoor direct wanneer je inhaalt of wordt ingehaald en krijg het te horen zodra de race voorbij is. Zo blijf je gefocust op het lopen.</p>
+                </div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class='bx bx-trophy'></i>
+                </div>
+                <div class="feature-content">
+                    <h3 class="feature-title">Hardlopen met iedereen</h3>
+                    <p class="feature-desc">Ga voor een afstandsrace voor extra motivatie of kies een tijdsrace om hard te lopen met vrienden op een ander niveau.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-section">
+        <div class="download-content">
+            <h2 class="download-title">Download nu!</h2>
+            <div class="download-buttons">
+                <a href="https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040" class="app-store-btn" target="_blank" rel="noopener">
+                    <img src="assets/Download app store knop.png" alt="Download in de App Store" width="200" height="auto">
+                </a>
+                <div class="store-subtext">
+                    <a href="https://tally.so/r/3EMJKX" target="_blank" rel="noopener">Android wachtlijst</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -90,7 +140,7 @@
                 <a href="/privacybeleid.html" class="footer-link">Privacybeleid</a>
                 <a href="/algemene-voorwaarden.html" class="footer-link">Algemene Voorwaarden</a>
             </div>
-            <p class="copyright">© 2024 Runamigo. Alle rechten voorbehouden.</p>
+            <p class="copyright">© 2025 Runamigo. Alle rechten voorbehouden.</p>
         </div>
     </footer>
 
@@ -110,5 +160,6 @@
             }
         });
     </script>
+    </div>
 </body>
 </html> 
