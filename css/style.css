@@ -352,6 +352,13 @@ header .container {
   box-sizing: border-box;
 }
 
+@media (max-width: 768px) {
+  .site-frame {
+    border: 8px solid transparent;
+    border-image: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) 50%, #F00C18 50%, #F00C18 100%) 1;
+  }
+}
+
 .hero {
   min-height: 100vh;
   max-height: 100vh;
@@ -507,10 +514,24 @@ header .container {
 }
 
 @media (max-width: 1024px) {
+  .hero {
+    min-height: auto;
+    max-height: none;
+    height: auto;
+    padding: calc(var(--spacing-unit) * 6) 0;
+    overflow: visible;
+  }
+  
+  .hero-content {
+    height: auto;
+  }
+  
   .hero-layout {
     grid-template-columns: 1fr;
     gap: 24px;
+    height: auto;
   }
+  
   .hero-text {
     text-align: center;
   }
@@ -522,27 +543,32 @@ header .container {
     text-align: center;
   }
   .hero-visual {
-    height: 50vh;
+    height: auto;
     min-height: 400px;
     margin-top: 8px;
   }
   .hero-visual .screen { 
-    height: 100%; 
-    width: auto;
-    max-height: 50vh;
+    height: auto;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    transform: none;
   }
 }
 
 @media (max-width: 640px) {
   .hero-visual {
-    height: 40vh;
+    height: auto;
     min-height: 300px;
     transform: translateX(-10px);
   }
   .hero-visual .screen { 
-    height: 100%; 
-    width: auto;
-    max-height: 40vh;
+    height: auto;
+    width: 100%;
+    max-width: 350px;
+    max-height: none;
+    object-fit: contain;
+    position: relative;
   }
   .hero-buttons { 
     justify-content: center; 
@@ -793,6 +819,7 @@ header .container {
   .features-grid {
     grid-template-columns: 1fr;
     gap: 24px;
+    padding: 0 8px;
   }
   
   .feature-card {
@@ -1219,7 +1246,11 @@ footer {
 @media (max-width: 768px) {
   .hero-content,
   .usps {
-    padding: 0 32px;
+    padding: 0 16px;
+  }
+  
+  .content-container {
+    padding: 8px 16px 56px 16px !important;
   }
 }
 
