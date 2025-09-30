@@ -23,6 +23,10 @@
       "dest": "/privacybeleid.html"
     },
     {
+      "src": "/download",
+      "dest": "/download.html"
+    },
+    {
       "src": "/auth/callback",
       "dest": "/auth/callback.html"
     },
