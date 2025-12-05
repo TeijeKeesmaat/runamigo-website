@@ -12,6 +12,78 @@
   --spacing-unit: 8px;
   --gradient: linear-gradient(135deg, #19A5FF 0%, #1565C0 100%);
 }
+
+/* Scroll Animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.animate-fade.animated {
+  opacity: 1;
+}
+
+.animate-slide-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.animate-slide-left.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-slide-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.animate-slide-right.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.animate-scale {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 1.5s cubic-bezier(0.34, 1.56, 0.64, 1), transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.animate-scale.animated {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Hero specific animations - remove stagger delays for hero */
+.hero .animate-on-scroll:nth-child(1),
+.hero .animate-on-scroll:nth-child(2),
+.hero .animate-on-scroll:nth-child(3),
+.hero .animate-on-scroll:nth-child(4),
+.hero .animate-on-scroll:nth-child(5),
+.hero .animate-on-scroll:nth-child(6) {
+  transition-delay: 0s;
+}
+
+/* Stagger animations for multiple elements */
+.animate-on-scroll:nth-child(1) { transition-delay: 0.1s; }
+.animate-on-scroll:nth-child(2) { transition-delay: 0.2s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.3s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.4s; }
+.animate-on-scroll:nth-child(5) { transition-delay: 0.5s; }
+.animate-on-scroll:nth-child(6) { transition-delay: 0.6s; }
 * {
   margin: 0;
   padding: 0;
@@ -25,6 +97,24 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 15;
+}
+
+.menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
 .container {
   max-width: 1200px;
   margin-left: auto;
@@ -37,10 +127,24 @@ body {
   .container {
     padding: 0 48px;
   }
+  header .container {
+    padding: 0 48px;
+  }
+  
+  .homepage header .container {
+    padding: 0 48px;
+  }
 }
 
 @media (min-width: 1024px) {
   .container {
+    padding: 0 64px;
+  }
+  header .container {
+    padding: 0 64px;
+  }
+  
+  .homepage header .container {
     padding: 0 64px;
   }
 }
@@ -51,12 +155,19 @@ body {
     max-width: 1440px;
     margin: 0 auto;
   }
+  header .container {
+    padding: 0 80px;
+  }
+  
+  .homepage header .container {
+    padding: 0 80px;
+  }
 }
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }
 
@@ -98,11 +209,41 @@ header {
     position: relative;
     width: 100%;
     height: 72px;
-    z-index: 1;
+    z-index: 20;
     border-bottom: none;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.homepage header {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    right: 0;
+    background: transparent;
+}
+
+.homepage .header-link {
+    color: #ffffff;
+}
+
+.homepage .header-link:hover {
+    color: #e5e7eb;
+}
+
+.homepage .header-cta {
+    background-color: #ffffff;
+    color: #0f172a;
+}
+
+.homepage .header-cta:hover {
+    background-color: #e5e7eb;
+    color: #0f172a;
+}
+
+.homepage .mobile-menu-btn {
+    color: #ffffff;
 }
 
 header .container {
@@ -110,7 +251,7 @@ header .container {
     align-items: center;
     justify-content: space-between;
     margin: 0 auto;
-    padding: 0 1rem;
+    padding: 0 24px;
     height: 64px;
     width: 100%;
 }
@@ -121,11 +262,10 @@ header .container {
 }
 
 .header-logo img {
-    height: 40px;
+    height: 52px;
     display: block;
     margin: 0;
     padding: 0;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
 .header-logo-text {
@@ -199,8 +339,13 @@ header .container {
   }
   
   header .container {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  
+  .content-page header .container {
+    padding-left: 0px;
+    padding-right: 0px;
   }
   
   .header-logo img {
@@ -214,32 +359,54 @@ header .container {
   .mobile-menu-btn {
     display: block;
   }
+  
   .header-nav {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: white;
+    background-color: transparent;
     flex-direction: column;
     padding: 16px;
     gap: 16px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: none;
     transform: translateY(-100%);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    border-radius: 0;
   }
+  
   .header-nav.active {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
+  
   .header-link, .header-cta {
     width: 100%;
     text-align: center;
   }
+  
   .header-cta {
     margin-top: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .homepage header .header-nav.active {
+    background-color: #050609;
+  }
+
+  .homepage header .header-nav.active .header-link {
+    color: #ffffff;
+  }
+  
+  .homepage header .header-nav.active .header-cta {
+    background-color: #19A5FF;
+    color: #ffffff;
   }
 }
 @media (max-width: 480px) {
@@ -357,63 +524,94 @@ header .container {
     border: 8px solid transparent;
     border-image: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-color) 50%, #F00C18 50%, #F00C18 100%) 1;
   }
+  
+  .header-nav {
+    left: 8px;
+    right: 8px;
+  }
 }
 
 .hero {
-  min-height: 100vh;
-  max-height: 100vh;
-  height: 100vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
-  padding: calc(var(--spacing-unit) * 10) 0;
-  background: white;
+  padding: calc(var(--spacing-unit) * 10) 0 0 0;
+  margin-bottom: 0;
+  background: linear-gradient(120deg, rgba(3,7,18,0.9), rgba(15,23,42,0.85)), url('../assets/runner_herogroot.jpg');
+  background-size: cover;
+  background-position: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+}
+
+@media (min-width: 1000px) {
+  .hero {
+    margin-bottom: calc(var(--spacing-unit) * 15);
+  }
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 150px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath fill='%23ffffff' d='M0,160 C360,220 720,100 1440,180 L1440,320 L0,320 Z'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-content {
   position: relative;
-  z-index: 1;
-  max-width: 1000px;
+  z-index: 2;
+  max-width: 1400px;
   margin: 0 auto;
   text-align: center;
-  color: var(--text-color);
+  color: #ffffff;
   padding: 0 calc(var(--spacing-unit) * 3);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100%;
+  min-height: 90vh;
 }
 
 .hero-layout {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   align-items: center;
-  gap: 32px;
-  height: 100%;
+  gap: 20px;
+  min-height: 90vh;
 }
 
 .hero-text {
   text-align: left;
+  margin-top: -15vh;
 }
 
 .hero-visual {
   position: relative;
-  height: 720px;
-  min-height: 600px;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  height: 100%;
+  max-height: none;
+  overflow: visible;
 }
 
 .hero-visual .screen {
-  position: absolute;
-  height: 720px;
-  min-height: 600px;
+  position: relative;
+  height: auto;
+  max-height: 110vh;
   width: auto;
   border-radius: 0;
   box-shadow: none;
   transform: translateZ(0);
+  object-fit: contain;
+  margin-bottom: -10vh;
 }
 
 .hero-badge {
@@ -463,23 +661,25 @@ header .container {
 
 @media (max-width: 1920px) and (min-width: 1025px) {
   .hero-visual {
-    height: 620px;
-    min-height: 520px;
+    max-height: none;
+    overflow: visible;
   }
   .hero-visual .screen {
-    height: 620px;
-    min-height: 520px;
+    max-height: 110vh;
+    height: auto;
+    margin-bottom: -10vh;
+    margin-top: 10vh;
   }
   .hero-logo {
     width: 220px !important;
     margin-bottom: 28px !important;
   }
   .hero-title {
-    font-size: 3.2rem !important;
+    font-size: 4.5rem !important;
     margin-bottom: 18px !important;
   }
   .hero-subtitle {
-    font-size: 0.95rem !important;
+    font-size: 1.2rem !important;
     margin-bottom: 22px !important;
   }
   .hero-buttons {
@@ -489,12 +689,13 @@ header .container {
 
 @media (max-width: 1366px) {
   .hero-visual {
-    height: 450px;
-    min-height: 380px;
+    max-height: none;
+    overflow: visible;
   }
   .hero-visual .screen {
-    height: 450px;
-    min-height: 380px;
+    max-height: 105vh;
+    height: auto;
+    margin-bottom: -8vh;
   }
   .hero-logo {
     width: 220px;
@@ -518,26 +719,34 @@ header .container {
     min-height: auto;
     max-height: none;
     height: auto;
-    padding: calc(var(--spacing-unit) * 6) 0;
+    padding: calc(var(--spacing-unit) * 20) 0 calc(var(--spacing-unit) * 6) 0;
     overflow: visible;
   }
   
   .hero-content {
     height: auto;
+    min-height: auto;
+    padding-top: calc(var(--spacing-unit) * 4);
+    justify-content: flex-start;
   }
   
   .hero-layout {
     grid-template-columns: 1fr;
     gap: 24px;
     height: auto;
+    min-height: auto;
   }
   
   .hero-text {
     text-align: center;
+    margin-top: 0;
   }
   .hero-buttons {
-    justify-content: center;
-    align-items: center;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100%;
+    flex-direction: row !important;
+    gap: 24px !important;
   }
   .store-subtext {
     text-align: center;
@@ -550,7 +759,7 @@ header .container {
   .hero-visual .screen { 
     height: auto;
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     position: relative;
     transform: none;
   }
@@ -591,13 +800,13 @@ header .container {
   margin-bottom: calc(var(--spacing-unit) * 3);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--text-color);
+  color: white;
 }
 
 .hero-subtitle {
   font-size: 1.1em;
   margin-bottom: 32px;
-  color: #666;
+  color: #f0f0f0;
   font-weight: 400;
   max-width: 800px;
   margin-left: auto;
@@ -655,6 +864,25 @@ header .container {
   box-shadow: 0 4px 16px rgba(0,0,0,0.15);
 }
 
+.app-store-btn.android-waitlist {
+  background: transparent;
+  box-shadow: none;
+}
+
+.app-store-btn.android-waitlist img {
+  max-width: none;
+}
+
+/* Zorg dat de downloadknoppen in de hero even groot zijn */
+.hero .app-store-btn img {
+  height: 54px;
+  width: auto;
+}
+
+.hero .app-store-btn.android-waitlist img {
+  height: 54px;
+}
+
 .app-store-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
@@ -692,13 +920,14 @@ header .container {
   
   .hero-title {
     font-size: 3.2em;
+    margin-bottom: calc(var(--spacing-unit) * 2);
   }
   
   .hero-subtitle {
-    font-size: 1.4em;
+    font-size: 1em;
   }
   .hero {
-    padding-top: 64px;
+    padding-top: 120px;
   }
   .hero-buttons { 
     justify-content: center; 
@@ -716,10 +945,11 @@ header .container {
   
   .hero-title {
     font-size: 2.6em;
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
   }
   
   .hero-subtitle {
-    font-size: 1.2em;
+    font-size: 0.95em;
   }
   
   .hero-cta {
@@ -732,6 +962,8 @@ header .container {
     gap: 16px;
     margin-top: 32px;
     align-items: center;
+    justify-content: center;
+    width: 100%;
   }
   
   .app-store-btn img {
@@ -866,9 +1098,10 @@ header .container {
 
 .download-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  gap: 16px;
+  justify-content: center;
+  gap: 24px;
 }
 
 .download-buttons .app-store-btn {
@@ -888,25 +1121,17 @@ header .container {
 
 .download-buttons .app-store-btn img {
   display: block;
-  height: auto;
-  max-width: 200px;
-  width: 100%;
+  height: 64px;
+  width: auto;
 }
 
-.download-buttons .store-subtext {
-  width: 100%;
-  text-align: center;
-  margin-top: 8px;
+.download-buttons .app-store-btn.android-waitlist {
+  background: transparent;
+  box-shadow: none;
 }
 
-.download-buttons .store-subtext a {
-  color: #666;
-  font-size: 0.95em;
-  text-decoration: underline;
-}
-
-.download-buttons .store-subtext a:hover {
-  color: #333;
+.download-buttons .app-store-btn.android-waitlist img {
+  max-width: none;
 }
 
 @media (max-width: 768px) {
@@ -921,6 +1146,11 @@ header .container {
   .download-title {
     font-size: 2rem;
     margin-bottom: 32px;
+  }
+  
+  .download-buttons {
+    flex-direction: column;
+    gap: 16px;
   }
 }
 
@@ -962,7 +1192,7 @@ header .container {
 .usps-header {
   grid-column: 1 / -1;
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 0px;
 }
 
 .usps-title {
@@ -1099,7 +1329,7 @@ header .container {
   }
   .usps-header {
     grid-area: header;
-    margin-bottom: 32px;
+    margin-bottom: 0px;
   }
   .usps-title {
     font-size: 2rem;
@@ -1251,6 +1481,12 @@ footer {
   
   .content-container {
     padding: 8px 16px 56px 16px !important;
+    box-shadow: none;
+  }
+  
+  header .container {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -1327,7 +1563,7 @@ footer {
 
 @media (max-width: 768px) {
     .hero {
-        padding-top: 64px;
+        padding-top: 120px;
     }
     
     main {
@@ -1374,19 +1610,22 @@ main, section:not(.hero) {
     padding: 40px 24px 64px 24px;
     box-sizing: border-box;
     background: transparent;
+    box-shadow: none;
 }
 
 @media (max-width: 768px) {
   .content-page .content-container {
-    padding: 8px 40px 56px 40px;
+    padding: 8px 24px 56px 24px;
     max-width: 100vw;
+    box-shadow: none;
   }
 }
 
 @media (max-width: 480px) {
-    .content-page .content-container {
-        padding: 6px 32px 48px 32px;
-    }
+  .content-page .content-container {
+    padding: 6px 16px 48px 16px;
+    box-shadow: none;
+  }
 }
 
 .content-page .content-container h1,

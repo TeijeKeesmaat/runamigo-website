@@ -32,11 +32,12 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 </head>
 <body class="homepage">
+    <div class="menu-overlay" id="menuOverlay"></div>
     <div class="site-frame">
     <header>
         <div class="container">
             <a href="/" class="header-logo">
-                <img src="assets/Runamigo app icon.png" alt="Runamigo logo" width="auto" height="32">
+                <img src="assets/logo.svg" alt="Runamigo logo" width="auto" height="32">
             </a>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu openen">
                 <i class='bx bx-menu'></i>
@@ -53,19 +54,18 @@
         <div class="hero-content">
             <div class="hero-layout">
                 <div class="hero-text">
-                    <img src="assets/logo.svg" alt="Runamigo" class="hero-logo">
-                    <h1 class="hero-title">Hardlopen met vrienden, waar je ook bent.</h1>
-                    <p class="hero-subtitle">Maak hardlopen leuker met Runamigo.</p>
+                    <h1 class="hero-title animate-on-scroll">Ga samen hardlopen</h1>
+                    <p class="hero-subtitle animate-on-scroll">Runamigo maakt hardlopen leuker en motiverender. Loop samen in real-time en vergelijk je snelheid of daag een ghost uit en verbeter je prestaties bij elke run.</p>
                     <div class="hero-buttons">
-                        <a href="https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040" class="app-store-btn">
+                        <a href="https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040" class="app-store-btn animate-scale">
                             <img src="assets/Download app store knop.png" alt="Download in de App Store" width="200" height="auto">
                         </a>
-                        <div class="store-subtext">
-                            <a href="https://tally.so/r/3EMJKX" target="_blank" rel="noopener">Android wachtlijst</a>
-                        </div>
+                        <a href="https://tally.so/r/3EMJKX" class="app-store-btn android-waitlist animate-scale" target="_blank" rel="noopener">
+                            <img src="assets/Download play store knop.svg" alt="Schrijf je in voor Android" width="220" height="auto">
+                        </a>
                     </div>
                 </div>
-                <div class="hero-visual" aria-hidden="true">
+                <div class="hero-visual animate-on-scroll" aria-hidden="true">
                     <img class="screen main" src="assets/Onboarding scherm 1.png" alt="Onboarding voorbeeldscherm">
                 </div>
             </div>
@@ -74,14 +74,14 @@
 
     <section class="usps">
         <div class="usps-header">
-            <h2 class="usps-title">Hardlopen is samen leuker.</h2>
-            <p class="usps-subtitle">Ontdek de features van Runamigo.</p>
+            <h2 class="usps-title animate-on-scroll">Hardlopen is samen leuker.</h2>
+            <p class="usps-subtitle animate-on-scroll">Ontdek de features van Runamigo.</p>
         </div>
-        <div class="usps-media" aria-hidden="true">
+        <div class="usps-media animate-scale" aria-hidden="true">
             <img src="assets/Runamigo features.png" alt="Runamigo features" class="usps-image">
         </div>
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card animate-on-scroll">
                 <div class="feature-icon">
                     <i class='bx bx-microphone'></i>
                 </div>
@@ -90,7 +90,7 @@
                     <p class="feature-desc">Praat met vrienden terwijl je rent, zonder te stoppen. Motiveer, moedig aan of maak de run leuker met de ingebouwde walkie-talkie.</p>
                 </div>
             </div>
-            <div class="feature-card">
+            <div class="feature-card animate-on-scroll">
                 <div class="feature-icon">
                     <i class='bx bx-map-alt'></i>
                 </div>
@@ -99,7 +99,7 @@
                     <p class="feature-desc">Bekijk tempo, afstand en voortgang live. Zie waar je vrienden zijn op de kaart en blijf gemotiveerd om voorop te blijven.</p>
                 </div>
             </div>
-            <div class="feature-card">
+            <div class="feature-card animate-on-scroll">
                 <div class="feature-icon">
                     <i class='bx bx-volume-full'></i>
                 </div>
@@ -108,7 +108,7 @@
                     <p class="feature-desc">Hoor direct wanneer je inhaalt of wordt ingehaald en krijg het te horen zodra de race voorbij is. Zo blijf je gefocust op het lopen.</p>
                 </div>
             </div>
-            <div class="feature-card">
+            <div class="feature-card animate-on-scroll">
                 <div class="feature-icon">
                     <i class='bx bx-trophy'></i>
                 </div>
@@ -121,15 +121,15 @@
     </section>
 
     <section class="download-section">
-        <div class="download-content">
+        <div class="download-content animate-on-scroll">
             <h2 class="download-title">Download nu!</h2>
             <div class="download-buttons">
                 <a href="https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040" class="app-store-btn">
                     <img src="assets/Download app store knop.png" alt="Download in de App Store" width="200" height="auto">
                 </a>
-                <div class="store-subtext">
-                    <a href="https://tally.so/r/3EMJKX" target="_blank" rel="noopener">Android wachtlijst</a>
-                </div>
+                <a href="https://tally.so/r/3EMJKX" class="app-store-btn android-waitlist" target="_blank" rel="noopener">
+                    <img src="assets/Download play store knop.svg" alt="Schrijf je in voor Android" width="220" height="auto">
+                </a>
             </div>
         </div>
     </section>
@@ -149,16 +149,70 @@
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const headerNav = document.getElementById('headerNav');
 
+        const menuOverlay = document.getElementById('menuOverlay');
+        
         mobileMenuBtn.addEventListener('click', () => {
             headerNav.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking outside
+        // Close mobile menu when clicking outside or on overlay
         document.addEventListener('click', (e) => {
             if (!headerNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                 headerNav.classList.remove('active');
+                menuOverlay.classList.remove('active');
             }
         });
+        
+        menuOverlay.addEventListener('click', () => {
+            headerNav.classList.remove('active');
+            menuOverlay.classList.remove('active');
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.querySelectorAll('.animate-on-scroll, .animate-fade, .animate-slide-left, .animate-slide-right, .animate-scale').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Trigger hero animations immediately on page load with staggered delays
+        setTimeout(() => {
+            // Titel eerst (0ms)
+            const title = document.querySelector('.hero-title');
+            if (title) title.classList.add('animated');
+            
+            // Subtitle iets later (200ms)
+            setTimeout(() => {
+                const subtitle = document.querySelector('.hero-subtitle');
+                if (subtitle) subtitle.classList.add('animated');
+            }, 200);
+            
+            // Download knoppen later met langere animatie (400ms)
+            setTimeout(() => {
+                const buttons = document.querySelectorAll('.hero .animate-scale');
+                buttons.forEach(btn => btn.classList.add('animated'));
+            }, 400);
+            
+            // Telefoon als laatste (700ms)
+            setTimeout(() => {
+                const phone = document.querySelector('.hero-visual');
+                if (phone) phone.classList.add('animated');
+            }, 700);
+        }, 100);
     </script>
     </div>
 </body>
