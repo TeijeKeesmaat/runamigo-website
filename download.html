@@ -27,10 +27,11 @@
         .tutorial img { width: 100%; height: auto; display: block; border-radius: 0; }
         .fixed-cta { position: fixed; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-top: 1px solid #E5E7EB; box-shadow: 0 -6px 20px rgba(0,0,0,0.08); padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); z-index: 50; }
         .fixed-cta .inner { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; }
-        .fixed-cta .app-store-btn { background: #000; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
-        .fixed-cta .app-store-btn img { max-width: 180px; }
-        .fixed-cta .store-subtext { text-align: center; }
-        .fixed-cta .store-subtext a { color: #6B7280; text-decoration: underline; font-weight: 700; }
+        .fixed-cta .store-buttons { display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; }
+        .fixed-cta .app-store-btn,
+        .fixed-cta .play-store-btn { background: #000; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+        .fixed-cta .app-store-btn img,
+        .fixed-cta .play-store-btn img { max-width: 180px; }
         @media (min-width: 768px) { .page-wrap { padding: 24px; } }
     </style>
 </head>
@@ -44,11 +45,13 @@
         </div>
         <div class="fixed-cta" role="complementary" aria-label="Download en wachtlijst">
             <div class="inner">
-                <a class="app-store-btn" href="https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040">
-                    <img src="assets/Download app store knop.png" alt="Download in de App Store" width="180" height="auto">
-                </a>
-                <div class="store-subtext">
-                    <a href="https://tally.so/r/3EMJKX" target="_blank" rel="noopener">Meld je aan voor de Android wachtlijst</a>
+                <div class="store-buttons">
+                    <a class="app-store-btn" href="https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040">
+                        <img src="assets/Download app store knop.png" alt="Download in de App Store" width="180" height="auto">
+                    </a>
+                    <a class="play-store-btn" href="https://play.google.com/store/apps/details?id=com.runamigo.app" target="_blank" rel="noopener">
+                        <img src="assets/Download play store knop.png" alt="Download in de Play Store" width="180" height="auto">
+                    </a>
                 </div>
             </div>
         </div>
@@ -60,7 +63,7 @@
             var isAndroid = /Android/i.test(ua);
             var isIOS = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
             var appStoreUrl = 'https://apps.apple.com/nl/app/runamigo-samen-hardlopen/id6747725040';
-            var androidRedirect = 'https://runamigo.nl/';
+            var androidRedirect = 'https://play.google.com/store/apps/details?id=com.runamigo.app';
 
             setTimeout(function () {
                 if (isIOS) {
