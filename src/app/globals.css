@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-secondary-800 font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .pixel-grid-bg {
+    background-image:
+      linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
