@@ -1,0 +1,14 @@
+[
+  { "key": "medallion", "name": "Medallion", "baseplatesH": 1, "baseplatesV": 1, "width": 11, "height": 14, "totalPixels": 154 },
+  { "key": "keychain", "name": "Keychain", "baseplatesH": 1, "baseplatesV": 1, "width": 11, "height": 14, "totalPixels": 154 },
+  { "key": "small_landscape", "name": "Small (1 plate)", "baseplatesH": 1, "baseplatesV": 1, "width": 50, "height": 40, "totalPixels": 2000 },
+  { "key": "small_portrait", "name": "Small portrait", "baseplatesH": 1, "baseplatesV": 1, "width": 40, "height": 50, "totalPixels": 2000 },
+  { "key": "medium_landscape", "name": "Medium landscape", "baseplatesH": 2, "baseplatesV": 1, "width": 100, "height": 40, "totalPixels": 4000 },
+  { "key": "medium_portrait", "name": "Medium portrait", "baseplatesH": 1, "baseplatesV": 2, "width": 50, "height": 80, "totalPixels": 4000 },
+  { "key": "square", "name": "Square", "baseplatesH": 2, "baseplatesV": 2, "width": 100, "height": 80, "totalPixels": 8000 },
+  { "key": "large_landscape", "name": "Large landscape", "baseplatesH": 3, "baseplatesV": 2, "width": 150, "height": 80, "totalPixels": 12000 },
+  { "key": "large_portrait", "name": "Large portrait", "baseplatesH": 2, "baseplatesV": 3, "width": 100, "height": 120, "totalPixels": 12000 },
+  { "key": "xl", "name": "XL", "baseplatesH": 3, "baseplatesV": 3, "width": 150, "height": 120, "totalPixels": 18000 },
+  { "key": "xxl", "name": "XXL", "baseplatesH": 4, "baseplatesV": 3, "width": 200, "height": 120, "totalPixels": 24000 },
+  { "key": "mega", "name": "Mega", "baseplatesH": 6, "baseplatesV": 6, "width": 300, "height": 240, "totalPixels": 72000 }
+]
